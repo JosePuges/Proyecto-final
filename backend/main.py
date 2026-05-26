@@ -1,5 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
+import os
 import sys
 from typing import Optional
 
@@ -54,9 +55,30 @@ app = FastAPI(
     version="3.0.0",
 )
 
+# Render / producción:
+# - En local permite React en localhost.
+# - En Render puedes definir FRONTEND_URL con la URL real del frontend.
+# - También puedes definir ALLOWED_ORIGINS con varias URLs separadas por coma.
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS")
+frontend_url = os.getenv("FRONTEND_URL")
+
+if allowed_origins_env:
+    allowed_origins = [
+        origin.strip()
+        for origin in allowed_origins_env.split(",")
+        if origin.strip()
+    ]
+elif frontend_url:
+    allowed_origins = [frontend_url]
+else:
+    allowed_origins = [
+        "http://localhost:3000",
+        "http://localhost:5173",
+    ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -409,8 +431,12 @@ def update_password(data: UpdatePassword, current_user: str = Depends(get_curren
 
 if __name__ == "__main__":
     import uvicorn
+
+    port = int(os.getenv("PORT", "8000"))
+
     logger.info("Iniciando API de Recomendacion de Libros...")
-    logger.info("Frontend: http://localhost:3000")
-    logger.info("API: http://localhost:8000")
-    logger.info("Docs: http://localhost:8000/docs")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    logger.info("Frontend permitido: %s", allowed_origins)
+    logger.info("API: http://0.0.0.0:%s", port)
+    logger.info("Docs: http://0.0.0.0:%s/docs", port)
+
+    uvicorn.run(app, host="0.0.0.0", port=port)
