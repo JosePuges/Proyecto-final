@@ -1,0 +1,1 @@
+import React from 'react';import styles from './LoadingSpinner.module.css';function LoadingSpinner(){return <div className={styles.loader}><div className={styles.rings}><span/><span/><span/></div><div><strong>Calculando afinidad emocional</strong><p>Comparando emociones, géneros y rating medio...</p></div></div>}export default LoadingSpinner;
