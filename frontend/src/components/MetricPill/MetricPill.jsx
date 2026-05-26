@@ -1,0 +1,1 @@
+import React from 'react';import styles from './MetricPill.module.css';function MetricPill({label,value}){return <div className={styles.pill}><span>{label}</span><strong>{value}</strong></div>}export default MetricPill;

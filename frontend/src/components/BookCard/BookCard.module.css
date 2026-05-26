@@ -1,0 +1,13 @@
+.card{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--r);background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.045)),rgba(15,23,42,.66);box-shadow:var(--shadow);backdrop-filter:blur(22px);transition:.18s}.card:before{content:"";position:absolute;inset:-80px -80px auto auto;width:180px;height:180px;border-radius:999px;background:rgba(34,211,238,.12);filter:blur(10px)}.card:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.34);box-shadow:var(--shadow),0 0 40px rgba(34,211,238,.12)}.top{position:relative;z-index:1;display:flex;justify-content:space-between;padding:20px 20px 0}.rank{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:38px;border-radius:14px;color:#06111f;background:linear-gradient(135deg,var(--d),var(--b));font-weight:950}.match{display:grid;text-align:right;color:var(--muted);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.match span{color:var(--text);font-size:1.35rem;letter-spacing:-.04em}.content{position:relative;z-index:1;display:grid;gap:18px;padding:22px}.content h3{margin:0;font-size:1.45rem;line-height:1.08;letter-spacing:-.04em}.author{margin:-10px 0 0;color:var(--soft);font-weight:750}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.grid div{display:grid;gap:5px;padding:12px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.055)}.grid span{color:var(--muted);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.genres{margin:0;color:var(--muted);line-height:1.55;font-size:.9rem;max-height:4.2em;overflow:hidden}.reason{margin:0;color:var(--soft);padding:14px;border-left:3px solid rgba(34,211,238,.7);background:rgba(34,211,238,.06);border-radius:14px;line-height:1.55;font-size:.92rem}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.synopsis {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  padding: 14px;
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+  max-height: 140px;
+  overflow: auto;
+}
